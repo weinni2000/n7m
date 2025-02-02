@@ -26,24 +26,31 @@ services:
     mem_limit: 200m
   feed:
     build: feed
-    image: smithmicro/n7m-feed
+    #image: smithmicro/n7m-feed
     depends_on:
       - gis
     environment:
       - PGPASSWORD=n7m-geocoding
-      - OSM_FILENAME=monaco-latest.osm.pbf
-      - NOMINATIM_REPLICATION_URL=https://download.geofabrik.de/europe/monaco-updates
+      #- OSM_FILENAME=monaco-latest.osm.pbf
+      - OSM_FILENAME=austria-latest.osm.pbf
+      #- NOMINATIM_REPLICATION_URL=https://download.geofabrik.de/europe/monaco-updates
+      - NOMINATIM_REPLICATION_URL=https://download.geofabrik.de/europe/austria-updates
       - NOMINATIM_REPLICATION_MAX_DIFF=3000
       - NOMINATIM_REPLICATION_UPDATE_INTERVAL=86400
     volumes:
       - ./data:/data/
+    command: tail -f /dev/null
   gis:
     build: gis
     image: smithmicro/n7m-gis
     restart: always
     ports:
-      - "5432:5432"
+      - "5439:5432"
     environment:
       - POSTGRES_PASSWORD=n7m-geocoding
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      #- ./pgdata:/var/lib/postgresql/data
+      #- ./monaco:/var/lib/postgresql/data
+      - ./austria:/var/lib/postgresql/data
+
+
