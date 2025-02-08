@@ -3,3 +3,8 @@ data/
 pgdata/
 austria
 austria_copy
+pgdata_backup
+monaco*
+austria*
+pgdata_corrupt
+unclearpgdata
