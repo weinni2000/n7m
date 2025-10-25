@@ -1,0 +1,9 @@
+osm2pgsql --create \
+  --database=gis2 \
+  --username=weinni2000 \
+  --output=flex \
+  --style=/home/weinni2000/doodba19/odoo/custom/src/n7m/polygons_only.lua \
+  /home/weinni2000/doodba19/odoo/custom/src/n7m/data/austria-latest.osm.pbf
+
+
+moved everything to download to be able to uplad
